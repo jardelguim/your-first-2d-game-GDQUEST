@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://17vmtxrkysi7"]
+
+[ext_resource type="PackedScene" uid="uid://bls7e03uednrc" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://b7kfwjamnw1tb" path="res://scenes/mob.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cd8sor4683qdp" path="res://scenes/tree.tscn" id="2_yqjtg"]
+
+[node name="Game" type="Node2D" unique_id=1220846652]
+y_sort_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=598571899]
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=625728896]
+offset_right = 1936.0
+offset_bottom = 1101.0
+color = Color(0.51718444, 0.5171845, 0.51718444, 1)
+
+[node name="Player" parent="." unique_id=1809900160 instance=ExtResource("1_uwrxv")]
+position = Vector2(924, 551)
+
+[node name="Mob" parent="." unique_id=409689519 instance=ExtResource("2_lnu2h")]
+position = Vector2(340, 585)
+
+[node name="Mob2" parent="." unique_id=1331399117 instance=ExtResource("2_lnu2h")]
+position = Vector2(285, 439)
+
+[node name="Mob3" parent="." unique_id=1292889773 instance=ExtResource("2_lnu2h")]
+position = Vector2(1152, 180)
+
+[node name="Mob4" parent="." unique_id=2132811458 instance=ExtResource("2_lnu2h")]
+position = Vector2(819, 176)
+
+[node name="Trees" type="Node2D" parent="." unique_id=1637597333]
+
+[node name="Tree" parent="Trees" unique_id=1321234635 instance=ExtResource("2_yqjtg")]
+position = Vector2(410, 813)
+
+[node name="Tree2" parent="Trees" unique_id=555827650 instance=ExtResource("2_yqjtg")]
+position = Vector2(524, 434)
+
+[node name="Tree3" parent="Trees" unique_id=1750635256 instance=ExtResource("2_yqjtg")]
+position = Vector2(1255, 333)
+
+[node name="Tree4" parent="Trees" unique_id=401822403 instance=ExtResource("2_yqjtg")]
+position = Vector2(926, 971)
+
+[node name="Tree5" parent="Trees" unique_id=198539074 instance=ExtResource("2_yqjtg")]
+position = Vector2(1499, 751)
+
+[node name="Tree6" parent="Trees" unique_id=103523433 instance=ExtResource("2_yqjtg")]
+position = Vector2(303, 209)
+
+[node name="Tree7" parent="Trees" unique_id=1953678366 instance=ExtResource("2_yqjtg")]
+position = Vector2(1342, 318)
+
+[node name="Tree8" parent="Trees" unique_id=918717068 instance=ExtResource("2_yqjtg")]
+position = Vector2(1316, 389)
+
+[node name="Tree9" parent="Trees" unique_id=355191641 instance=ExtResource("2_yqjtg")]
+position = Vector2(1608, 1019)
