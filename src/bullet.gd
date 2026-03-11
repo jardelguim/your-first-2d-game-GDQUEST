@@ -14,7 +14,9 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 	
 func _on_body_entered(body): # Triggers on collision with another(any) body
+	print("Bullet hit!")
+	print(body.name)
 	queue_free()
 	# Checks if colidded body has "take_damage" function
 	if body.has_method("take_damage"):
-		body.take_damage
+		body.call("take_damage")

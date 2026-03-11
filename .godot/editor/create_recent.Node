@@ -1,6 +1,7 @@
-Timer
+ProgressBar
 CollisionShape2D
 Area2D
+Timer
 Marker2D
 Sprite2D
 Node2D

@@ -6,6 +6,20 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_71rcx"]
 radius = 54.00926
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsing"]
+bg_color = Color(0.15294118, 0.16862746, 0.1882353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4cuo"]
+bg_color = Color(1, 0.05490196, 0.1882353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="Mob" type="CharacterBody2D" unique_id=409689519]
 collision_layer = 2
 collision_mask = 3
@@ -13,7 +27,20 @@ platform_floor_layers = 4294967040
 script = ExtResource("1_bsing")
 
 [node name="Slime" parent="." unique_id=2008890567 instance=ExtResource("2_d4cuo")]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=878548615]
 position = Vector2(0, -26)
 shape = SubResource("CircleShape2D_71rcx")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=185094395]
+unique_name_in_owner = true
+offset_left = -64.0
+offset_top = -113.0
+offset_right = 68.0
+offset_bottom = -100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_bsing")
+theme_override_styles/fill = SubResource("StyleBoxFlat_d4cuo")
+max_value = 3.0
+value = 3.0
+show_percentage = false
