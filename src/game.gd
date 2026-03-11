@@ -1,7 +1,5 @@
 extends Node2D
 
-func _ready():
-	pass
 
 func spawn_mob():
 	var new_mob = preload("res://scenes/mob.tscn").instantiate()
@@ -10,10 +8,8 @@ func spawn_mob():
 	print("Mob spawned at: " + str(new_mob.global_position))
 	add_child(new_mob)
 
-
 func _on_timer_timeout() -> void:
 	spawn_mob()
-
 
 func _on_player_health_depleted() -> void:
 	%GameOver.visible = true

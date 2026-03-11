@@ -29,8 +29,9 @@ func shoot():
 	muzzleFlash.global_position = %ShootingPoint.global_position
 	muzzleFlash.global_rotation = %ShootingPoint.global_rotation
 	# Creates a new_bullet as a chield of Shooting point
+	%ShootingPoint.add_child(muzzleFlash)
 	%ShootingPoint.add_child(new_bullet)
-	%ShootingPoint.add_child(new_bullet)
+	$Shoot.play()
 	
 func _on_timer_timeout() -> void:
 	if isEnemiesInRange == true:

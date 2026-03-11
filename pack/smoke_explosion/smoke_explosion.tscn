@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://cjjy1aucj6gji" path="res://pack/smoke_explosion/smoke_explosion.gdshader" id="1_bmef6"]
 [ext_resource type="Script" uid="uid://bmcptrd1f7ok" path="res://pack/smoke_explosion/smoke_explosion.gd" id="1_kb8ql"]
+[ext_resource type="AudioStream" uid="uid://bsmx1vags8dbe" path="res://sounds/combat/mixkit-short-explosion-1694.wav" id="3_h23cy"]
 
 [sub_resource type="Gradient" id="Gradient_obal6"]
 interpolation_mode = 1
@@ -146,3 +147,6 @@ color = Color(0.568627, 0.568627, 0.568627, 1)
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_8msef")
 autoplay = &"RESET"
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="." unique_id=1108446026]
+stream = ExtResource("3_h23cy")

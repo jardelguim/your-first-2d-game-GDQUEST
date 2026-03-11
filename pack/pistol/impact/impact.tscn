@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://de6y8t2sf6ynh" path="res://pack/pistol/impact/impact.gd" id="1_4vum2"]
 [ext_resource type="Texture2D" uid="uid://ca0823iqg8dep" path="res://pack/pistol/impact/circle.png" id="2_wp1di"]
+[ext_resource type="AudioStream" uid="uid://v87ouycq2uj" path="res://sounds/combat/mixkit-body-punch-quick-hit-2153.wav" id="3_vwwg0"]
 
 [node name="Impact" type="Node2D" unique_id=1086043160]
 top_level = true
@@ -11,3 +12,6 @@ script = ExtResource("1_4vum2")
 unique_name_in_owner = true
 modulate = Color(1, 0.831373, 0.239216, 1)
 texture = ExtResource("2_wp1di")
+
+[node name="Impact" type="AudioStreamPlayer2D" parent="." unique_id=1246730543]
+stream = ExtResource("3_vwwg0")

@@ -15,7 +15,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func take_damage():
-	print("Damage taken!")
 	health -= 1
 	%ProgressBar.show()
 	%ProgressBar.value = health
@@ -27,3 +26,5 @@ func take_damage():
 		var smoke = SMOKE_EXPLOSION.instantiate()
 		get_parent().add_child(smoke)
 		smoke.global_position = global_position
+		
+		
