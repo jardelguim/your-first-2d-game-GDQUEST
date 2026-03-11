@@ -14,7 +14,6 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * 300
 	move_and_slide()
 	
-
 func take_damage():
 	print("Damage taken!")
 	health -= 1
@@ -24,7 +23,6 @@ func take_damage():
 	
 	if health == 0:
 		queue_free()
-		
 		const SMOKE_EXPLOSION = preload("uid://dhmhmrth6rdce")
 		var smoke = SMOKE_EXPLOSION.instantiate()
 		get_parent().add_child(smoke)

@@ -1,5 +1,11 @@
 res://scenes/player.tscn
-res://src/player.gd
 res://scenes/game.tscn
-res://scenes/mob.tscn
+res://src/game.gd
+res://scenes/gun.tscn
+res://src/gun.gd
 res://src/mob.gd
+res://src/player.gd
+res://pack/pistol/muzzle_flash/muzzle_flash.tscn
+res://pack/pistol/muzzle_flash/muzzle_flash.gd
+res://scenes/bullet.tscn
+res://src/bullet.gd

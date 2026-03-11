@@ -17,6 +17,9 @@ func _on_body_entered(body): # Triggers on collision with another(any) body
 	print("Bullet hit!")
 	print(body.name)
 	queue_free()
+	var impact = preload("res://pack/pistol/impact/impact.tscn").instantiate()
+	impact.global_position = global_position
+	get_parent().add_child(impact)
 	# Checks if colidded body has "take_damage" function
 	if body.has_method("take_damage"):
 		body.call("take_damage")

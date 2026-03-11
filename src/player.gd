@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 		%HappyBoo.play_idle_animation()
 		
 	# Player damage conditions
-	const DAMAGE_RATE : float = 5.0
+	const DAMAGE_RATE : float = 50.0
 	var overlapping_bodies : Array = %HurtBox.get_overlapping_bodies()
 	if overlapping_bodies.size() > 0:
 		health -= DAMAGE_RATE * overlapping_bodies.size() * delta
