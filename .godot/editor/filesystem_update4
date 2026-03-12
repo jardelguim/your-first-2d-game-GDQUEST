@@ -1,10 +1,9 @@
-res://scenes/mob.tscn
-res://src/audio_manager.gd
-res://scenes/audio_manager.tscn
-res://src/mob.gd
 res://scenes/game.tscn
 res://src/game.gd
-res://src/bullet.gd
+res://src/player.gd
 res://scenes/hud.tscn
-res://styles/upgrade_button_style.tres
+res://src/mob.gd
 res://src/hud.gd
+res://scenes/player.tscn
+res://src/gun.gd
+res://scenes/gun.tscn

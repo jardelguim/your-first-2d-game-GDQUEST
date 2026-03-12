@@ -1,9 +1,9 @@
+Label
+VBoxContainer
 Panel
 MarginContainer
 ColorRect
 Button
-Label
-VBoxContainer
 HBoxContainer
 CanvasLayer
 Control
@@ -12,4 +12,3 @@ Area2D
 Timer
 PathFollow2D
 Path2D
-Camera2D

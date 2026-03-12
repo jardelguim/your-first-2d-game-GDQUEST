@@ -1,8 +1,17 @@
 extends Area2D
 
-var isEnemiesInRange = false
+# Signals
+signal shooted
 
-func _physics_process(delta: float) -> void:
+# Variables
+var isEnemiesInRange = false
+var fireRate = 0.5
+
+func _change_fire_rate():
+	fireRate = get_parent().fireRate
+	$Timer.wait_time = fireRate
+
+func _physics_process(_delta: float) -> void:
 	# Get enemies inside the collision and creates a array
 	var enemies_in_range = get_overlapping_bodies()
 	if enemies_in_range.size() > 0:
@@ -15,6 +24,7 @@ func _physics_process(delta: float) -> void:
 		isEnemiesInRange = false
 		
 func shoot():
+	_change_fire_rate()
 	# Preload bullet scene and store in a constant
 	const BULLET = preload("res://scenes/bullet.tscn")
 	const MUZZLE = preload("res://pack/pistol/muzzle_flash/muzzle_flash.tscn")

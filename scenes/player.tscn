@@ -49,7 +49,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_qhqgy")
 debug_color = Color(0.71763974, 0.44776165, 0.48515958, 0.41960785)
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=584584929]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=584584929]
 unique_name_in_owner = true
 offset_left = -95.0
 offset_top = -149.0
@@ -58,4 +58,5 @@ offset_bottom = -122.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qhqgy")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dqkch")
 value = 100.0
+exp_edit = true
 show_percentage = false

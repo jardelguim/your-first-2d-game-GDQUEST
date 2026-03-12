@@ -26,7 +26,7 @@ unique_name_in_owner = true
 position = Vector2(25, -10)
 
 [node name="Timer" type="Timer" parent="." unique_id=248683225]
-wait_time = 0.3
+wait_time = 0.5
 autostart = true
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="." unique_id=960447841]

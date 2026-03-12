@@ -51,17 +51,17 @@ theme_override_constants/separation = 33
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/normal = ExtResource("2_5ysmq")
-text = "Upgrade 1"
+text = "Upgrade damage"
 
 [node name="UpgradeButton2" type="Button" parent="UpgradeContainer" unique_id=1194538721]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_5ysmq")
-text = "Upgrade 2"
+text = "Upgrade health"
 
 [node name="UpgradeButton3" type="Button" parent="UpgradeContainer" unique_id=514683087]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_5ysmq")
-text = "Upgrade 3"
+text = "Upgrade speed"
 
 [node name="LabelContainer" type="VBoxContainer" parent="." unique_id=2028767810]
 layout_mode = 0
@@ -70,15 +70,15 @@ offset_top = 25.0
 offset_right = 160.0
 offset_bottom = 137.0
 
-[node name="AliveLabel" type="Label" parent="LabelContainer" unique_id=1276474500]
-layout_mode = 2
-theme_override_font_sizes/font_size = 39
-text = "Alive: "
-
 [node name="ScoreLabel" type="Label" parent="LabelContainer" unique_id=565592677]
 layout_mode = 2
 theme_override_font_sizes/font_size = 39
 text = "Score : "
+
+[node name="LevelLabel" type="Label" parent="LabelContainer" unique_id=1927073816]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "Level : 1"
 
 [node name="PauseMarginContainer" type="MarginContainer" parent="." unique_id=569347867]
 layout_mode = 1
@@ -120,5 +120,55 @@ theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = ExtResource("3_5ysmq")
 text = "Exit"
 
+[node name="DebugContainer" type="VBoxContainer" parent="." unique_id=2048339219]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -171.45001
+offset_right = 556.0
+offset_bottom = -59.449524
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="DebugContainer" unique_id=254040100]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Debug"
+horizontal_alignment = 1
+
+[node name="AliveLabel" type="Label" parent="DebugContainer" unique_id=1276474500]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Alive: 10"
+
+[node name="ExperienceLabel" type="Label" parent="DebugContainer" unique_id=458613689]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Experience : 00 , needed : 00"
+
+[node name="DamageLabel" type="Label" parent="DebugContainer" unique_id=1086009316]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Experience : 00 , needed : 00"
+
+[node name="HealthLabel" type="Label" parent="DebugContainer" unique_id=1978684637]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Experience : 00 , needed : 00"
+
+[node name="SpeedLabel" type="Label" parent="DebugContainer" unique_id=1038377094]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Experience : 00 , needed : 00"
+
+[node name="FireRateLabel" type="Label" parent="DebugContainer" unique_id=774221667]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Experience : 00 , needed : 00"
+
+[connection signal="pressed" from="UpgradeContainer/UpgradeButton1" to="." method="_on_upgrade_button_1_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeButton2" to="." method="_on_upgrade_button_2_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeButton3" to="." method="_on_upgrade_button_3_pressed"]
 [connection signal="pressed" from="PauseMarginContainer/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMarginContainer/PauseContainer/ExitButton" to="." method="_on_exit_button_pressed"]

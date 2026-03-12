@@ -99,6 +99,7 @@ text = "Game Over :("
 
 [node name="HUD" parent="HUDLayer" unique_id=1756104570 instance=ExtResource("2_lbhrr")]
 
+[connection signal="hudLeveled_up" from="." to="HUDLayer/HUD" method="_on_game_hud_leveled_up"]
 [connection signal="hudUpdate" from="." to="HUDLayer/HUD" method="_on_game_hud_update"]
 [connection signal="pause" from="." to="HUDLayer/HUD" method="_on_game_pause"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
