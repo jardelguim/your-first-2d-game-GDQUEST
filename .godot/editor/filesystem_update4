@@ -1,2 +1,7 @@
 res://scenes/hud.tscn
 res://src/hud.gd
+res://styles/upgrade_button_style.tres
+res://styles/upgrade_button_hover_style.tres
+res://src/game.gd
+res://src/gun.gd
+res://src/mob.gd

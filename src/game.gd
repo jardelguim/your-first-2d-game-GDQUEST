@@ -14,7 +14,7 @@ signal pause
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		emit_signal("pause")
 		get_tree().paused = true
@@ -52,5 +52,6 @@ func _on_player_leveled_up():
 	hudLeveled_up.emit()
 	player.level += 1
 	get_node("/root/Game/Player/HealthBar").max_value = player.maxHealth
+	player.experience = player.maxExperiences
 	player.maxExperience = player.maxExperience * 1.8
 	

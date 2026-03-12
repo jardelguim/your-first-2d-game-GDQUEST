@@ -1,7 +1,7 @@
 extends Area2D
 
 # Signals
-signal shooted
+# signal shooted
 
 # Variables
 var isEnemiesInRange = false

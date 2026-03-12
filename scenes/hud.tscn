@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://k6tg6t4wsbrv" path="res://src/hud.gd" id="1_oo0fn"]
 [ext_resource type="StyleBox" uid="uid://cqrb8c8ed17yu" path="res://styles/upgrade_button_style.tres" id="2_5ysmq"]
 [ext_resource type="StyleBox" uid="uid://2un5ryrrt1sn" path="res://styles/button_style.tres" id="3_5ysmq"]
+[ext_resource type="StyleBox" uid="uid://ojcyeuj5orl4" path="res://styles/upgrade_button_hover_style.tres" id="4_5pdws"]
+[ext_resource type="Texture2D" uid="uid://ckk5olyxebpee" path="res://assets/revolver.png" id="4_047uy"]
+[ext_resource type="Texture2D" uid="uid://ctegcyxdsb3iw" path="res://assets/hearts.png" id="5_5pdws"]
+[ext_resource type="Texture2D" uid="uid://cwdt0dtfw8hta" path="res://assets/sprint.png" id="6_hd3ao"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ysmq"]
 content_margin_left = 0.0
@@ -33,16 +37,17 @@ grow_vertical = 2
 script = ExtResource("1_oo0fn")
 
 [node name="UpgradeContainer" type="HBoxContainer" parent="." unique_id=896232375]
+layout_direction = 2
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -196.5
+offset_top = -111.0
+offset_right = 196.5
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 33
@@ -172,25 +177,41 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/normal = ExtResource("2_5ysmq")
+theme_override_styles/hover = ExtResource("4_5pdws")
 text = "Upgrade damage"
+icon = ExtResource("4_047uy")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="HealthButton" type="Button" parent="PossibleUpgrades" unique_id=1586593638]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_5ysmq")
+theme_override_styles/hover = ExtResource("4_5pdws")
 text = "Upgrade health"
+icon = ExtResource("5_5pdws")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="SpeedButton" type="Button" parent="PossibleUpgrades" unique_id=1404099219]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_5ysmq")
+theme_override_styles/hover = ExtResource("4_5pdws")
 text = "Upgrade speed"
+icon = ExtResource("6_hd3ao")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="FireRateButton" type="Button" parent="PossibleUpgrades" unique_id=962697526]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_5ysmq")
+theme_override_styles/hover = ExtResource("4_5pdws")
 text = "Upgrade fire rate"
+icon = ExtResource("4_047uy")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [connection signal="pressed" from="PauseMarginContainer/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMarginContainer/PauseContainer/ExitButton" to="." method="_on_exit_button_pressed"]
