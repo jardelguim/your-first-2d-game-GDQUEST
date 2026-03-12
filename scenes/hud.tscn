@@ -1,9 +1,124 @@
 [gd_scene format=3 uid="uid://cuoeh46t7n77m"]
 
+[ext_resource type="Script" uid="uid://k6tg6t4wsbrv" path="res://src/hud.gd" id="1_oo0fn"]
+[ext_resource type="StyleBox" uid="uid://cqrb8c8ed17yu" path="res://styles/upgrade_button_style.tres" id="2_5ysmq"]
+[ext_resource type="StyleBox" uid="uid://2un5ryrrt1sn" path="res://styles/button_style.tres" id="3_5ysmq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ysmq"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 1
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
+
 [node name="HUD" type="Control" unique_id=1756104570]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oo0fn")
+
+[node name="UpgradeContainer" type="HBoxContainer" parent="." unique_id=896232375]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 33
+
+[node name="UpgradeButton1" type="Button" parent="UpgradeContainer" unique_id=2142544127]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = ExtResource("2_5ysmq")
+text = "Upgrade 1"
+
+[node name="UpgradeButton2" type="Button" parent="UpgradeContainer" unique_id=1194538721]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_5ysmq")
+text = "Upgrade 2"
+
+[node name="UpgradeButton3" type="Button" parent="UpgradeContainer" unique_id=514683087]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_5ysmq")
+text = "Upgrade 3"
+
+[node name="LabelContainer" type="VBoxContainer" parent="." unique_id=2028767810]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 160.0
+offset_bottom = 137.0
+
+[node name="AliveLabel" type="Label" parent="LabelContainer" unique_id=1276474500]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "Alive: "
+
+[node name="ScoreLabel" type="Label" parent="LabelContainer" unique_id=565592677]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "Score : "
+
+[node name="PauseMarginContainer" type="MarginContainer" parent="." unique_id=569347867]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = -140.5
+offset_right = 255.0
+offset_bottom = 140.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="PauseMarginContainer" unique_id=423854905]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ysmq")
+
+[node name="PauseContainer" type="VBoxContainer" parent="PauseMarginContainer" unique_id=1960574137]
+layout_mode = 2
+theme_override_constants/separation = 52
+
+[node name="Label" type="Label" parent="PauseMarginContainer/PauseContainer" unique_id=2038943052]
+layout_mode = 2
+theme_override_font_sizes/font_size = 37
+text = "Game Paused!"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMarginContainer/PauseContainer" unique_id=281128122]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_5ysmq")
+text = "Resume"
+
+[node name="ExitButton" type="Button" parent="PauseMarginContainer/PauseContainer" unique_id=1481980920]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_5ysmq")
+text = "Exit"
+
+[connection signal="pressed" from="PauseMarginContainer/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMarginContainer/PauseContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://cqrb8c8ed17yu"]
+
+[resource]
+border_width_left = 50
+border_width_top = 150
+border_width_right = 50
+border_width_bottom = 150

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2fwgsvjeqesi" path="res://src/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bls7e03uednrc" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cuoeh46t7n77m" path="res://scenes/hud.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cd8sor4683qdp" path="res://scenes/tree.tscn" id="2_yqjtg"]
 
 [sub_resource type="Curve2D" id="Curve2D_iywne"]
@@ -94,5 +95,11 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 110
 text = "Game Over :("
 
+[node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1948780793]
+
+[node name="HUD" parent="HUDLayer" unique_id=1756104570 instance=ExtResource("2_lbhrr")]
+
+[connection signal="hudUpdate" from="." to="HUDLayer/HUD" method="_on_game_hud_update"]
+[connection signal="pause" from="." to="HUDLayer/HUD" method="_on_game_pause"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

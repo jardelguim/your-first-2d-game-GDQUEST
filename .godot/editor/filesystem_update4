@@ -5,3 +5,6 @@ res://src/mob.gd
 res://scenes/game.tscn
 res://src/game.gd
 res://src/bullet.gd
+res://scenes/hud.tscn
+res://styles/upgrade_button_style.tres
+res://src/hud.gd

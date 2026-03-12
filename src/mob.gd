@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var health = 3
+signal enemyDeath
 
 # Gets the player node at the start of the game
 @onready var player = get_node("/root/Game/Player")
@@ -22,6 +23,7 @@ func take_damage():
 	
 	if health == 0:
 		queue_free()
+		emit_signal("enemyDeath" , global_position)
 		const SMOKE_EXPLOSION = preload("uid://dhmhmrth6rdce")
 		var smoke = SMOKE_EXPLOSION.instantiate()
 		get_parent().add_child(smoke)
