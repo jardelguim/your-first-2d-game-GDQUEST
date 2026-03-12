@@ -1,9 +1,2 @@
-res://scenes/game.tscn
-res://src/game.gd
-res://src/player.gd
 res://scenes/hud.tscn
-res://src/mob.gd
 res://src/hud.gd
-res://scenes/player.tscn
-res://src/gun.gd
-res://scenes/gun.tscn

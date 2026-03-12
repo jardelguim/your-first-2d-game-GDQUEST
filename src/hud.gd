@@ -43,31 +43,34 @@ func _hide_upgrade_list():
 func _show_upgrade_list():
 	$UpgradeContainer.show()
 	var button1 = possibleUpgrade.pick_random()
-	$UpgradeContainer/UpgradeButton1.text = "Upgrade " + str(button1)
+	button1.reparent(get_node("UpgradeContainer"))
 	var button2 = possibleUpgrade.pick_random()
-	$UpgradeContainer/UpgradeButton2.text = "Upgrade " + str(button2)
+	button2.reparent(get_node("UpgradeContainer"))
 	var button3 = possibleUpgrade.pick_random()
-	$UpgradeContainer/UpgradeButton3.text = "Upgrade " + str(button3)
+	button3.reparent(get_node("UpgradeContainer"))
 	get_tree().paused = true
 
-# Upgrade buttons
-# 1 - Damage 2 - Health 3 - Speed
+# Upgrades
 
-var possibleUpgrade : Array = [
-	"damage" ,
-	"speed" ,
-	"maxHealth" ,
-	"fireRate"
-]
-
-func _on_upgrade_button_1_pressed() -> void:
+@onready var possibleUpgrade : Array = [
+	%DamageButton ,
+	%HealthButton ,
+	%SpeedButton ,
+	%FireRateButton 
+	]
+	
+func _on_damage_button_pressed() -> void:
 	player.damage += 1.5
 	_hide_upgrade_list()
-
-func _on_upgrade_button_2_pressed() -> void:
+	
+func _on_health_button_pressed() -> void:
 	player.maxHealth += 20
 	_hide_upgrade_list()
+	
+func _on_speed_button_pressed() -> void:
+	player.speed += 30
+	_hide_upgrade_list()
 
-func _on_upgrade_button_3_pressed() -> void:
+func _on_fire_rate_button_pressed() -> void:
 	player.fireRate -= 0.1
 	_hide_upgrade_list()

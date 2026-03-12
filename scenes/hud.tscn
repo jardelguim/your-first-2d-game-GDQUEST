@@ -47,22 +47,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 33
 
-[node name="UpgradeButton1" type="Button" parent="UpgradeContainer" unique_id=2142544127]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_styles/normal = ExtResource("2_5ysmq")
-text = "Upgrade damage"
-
-[node name="UpgradeButton2" type="Button" parent="UpgradeContainer" unique_id=1194538721]
-layout_mode = 2
-theme_override_styles/normal = ExtResource("2_5ysmq")
-text = "Upgrade health"
-
-[node name="UpgradeButton3" type="Button" parent="UpgradeContainer" unique_id=514683087]
-layout_mode = 2
-theme_override_styles/normal = ExtResource("2_5ysmq")
-text = "Upgrade speed"
-
 [node name="LabelContainer" type="VBoxContainer" parent="." unique_id=2028767810]
 layout_mode = 0
 offset_left = 25.0
@@ -81,6 +65,7 @@ theme_override_font_sizes/font_size = 39
 text = "Level : 1"
 
 [node name="PauseMarginContainer" type="MarginContainer" parent="." unique_id=569347867]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -167,8 +152,49 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Experience : 00 , needed : 00"
 
-[connection signal="pressed" from="UpgradeContainer/UpgradeButton1" to="." method="_on_upgrade_button_1_pressed"]
-[connection signal="pressed" from="UpgradeContainer/UpgradeButton2" to="." method="_on_upgrade_button_2_pressed"]
-[connection signal="pressed" from="UpgradeContainer/UpgradeButton3" to="." method="_on_upgrade_button_3_pressed"]
+[node name="PossibleUpgrades" type="HBoxContainer" parent="." unique_id=158120495]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = 220.0
+offset_right = 368.0
+offset_bottom = 543.00024
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 33
+
+[node name="DamageButton" type="Button" parent="PossibleUpgrades" unique_id=1111909669]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = ExtResource("2_5ysmq")
+text = "Upgrade damage"
+
+[node name="HealthButton" type="Button" parent="PossibleUpgrades" unique_id=1586593638]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_5ysmq")
+text = "Upgrade health"
+
+[node name="SpeedButton" type="Button" parent="PossibleUpgrades" unique_id=1404099219]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_5ysmq")
+text = "Upgrade speed"
+
+[node name="FireRateButton" type="Button" parent="PossibleUpgrades" unique_id=962697526]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_5ysmq")
+text = "Upgrade fire rate"
+
 [connection signal="pressed" from="PauseMarginContainer/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMarginContainer/PauseContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PossibleUpgrades/DamageButton" to="." method="_on_damage_button_pressed"]
+[connection signal="pressed" from="PossibleUpgrades/HealthButton" to="." method="_on_health_button_pressed"]
+[connection signal="pressed" from="PossibleUpgrades/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="PossibleUpgrades/FireRateButton" to="." method="_on_fire_rate_button_pressed"]
