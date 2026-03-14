@@ -1,12 +1,14 @@
 extends CharacterBody2D
+class_name Enemy
 
 # Signals
 signal enemyDeath
-signal player_leveled_up
 
 # Variables
-var health : float = 3
-var experienceGiven : int = 1
+@export var  health : float = 3
+@export var speed : float = 200
+@export var experienceGiven : int = 1
+@export var damage : float = 50.0
 
 # Gets the player node at the start of the game
 @onready var player = get_node("/root/Game/Player")
@@ -17,7 +19,7 @@ func _ready() -> void:
 	
 func _physics_process(_delta: float) -> void:
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * 300
+	velocity = direction * speed
 	move_and_slide()
 	
 func take_damage():
@@ -29,12 +31,10 @@ func take_damage():
 	if health <= 0:
 		queue_free()
 		player.experience += experienceGiven
-		if player.experience >= player.maxExperience:
-			print("Level up")
-			emit_signal("player_leveled_up")
 		emit_signal("enemyDeath" , global_position)
 		const SMOKE_EXPLOSION = preload("uid://dhmhmrth6rdce")
 		var smoke = SMOKE_EXPLOSION.instantiate()
+		AudioManager._play_explosion_sound(global_position)
 		get_parent().add_child(smoke)
 		smoke.global_position = global_position
 		

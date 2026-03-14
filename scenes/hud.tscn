@@ -8,6 +8,23 @@
 [ext_resource type="Texture2D" uid="uid://ctegcyxdsb3iw" path="res://assets/hearts.png" id="5_5pdws"]
 [ext_resource type="Texture2D" uid="uid://cwdt0dtfw8hta" path="res://assets/sprint.png" id="6_hd3ao"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pdws"]
+bg_color = Color(0, 0, 0, 0.4627451)
+border_width_left = 2
+border_width_top = 5
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 16
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ysmq"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -26,6 +43,9 @@ expand_margin_top = 50.0
 expand_margin_right = 50.0
 expand_margin_bottom = 50.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd3ao"]
+bg_color = Color(0.40394276, 0.45523793, 1, 1)
+
 [node name="HUD" type="Control" unique_id=1756104570]
 process_mode = 3
 layout_mode = 3
@@ -36,38 +56,66 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oo0fn")
 
-[node name="UpgradeContainer" type="HBoxContainer" parent="." unique_id=896232375]
-layout_direction = 2
+[node name="TimerAndLevelMargin" type="MarginContainer" parent="." unique_id=662749978]
+layout_mode = 0
+offset_left = 37.14
+offset_top = 51.33
+offset_right = 1070.14
+offset_bottom = 105.33001
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TimerAndLevelMargin" unique_id=2040980736]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 718
+
+[node name="LevelLabel" type="Label" parent="TimerAndLevelMargin/HBoxContainer" unique_id=1927073816]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "Level : 1"
+
+[node name="TimerLabel" type="Label" parent="TimerAndLevelMargin/HBoxContainer" unique_id=1100482053]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="MarginUpgradeContainer" type="MarginContainer" parent="." unique_id=699550237]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -196.5
-offset_top = -111.0
+offset_top = -209.0
 offset_right = 196.5
-offset_bottom = 200.0
+offset_bottom = 209.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginUpgradeContainer" unique_id=1312562247]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pdws")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginUpgradeContainer" unique_id=222133007]
+layout_mode = 2
+theme_override_constants/separation = 27
+
+[node name="Label" type="Label" parent="MarginUpgradeContainer/VBoxContainer" unique_id=372870688]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 23
+text = "Level up!
+Choose a upgrade"
+horizontal_alignment = 1
+
+[node name="UpgradeContainer" type="HBoxContainer" parent="MarginUpgradeContainer/VBoxContainer" unique_id=896232375]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
 theme_override_constants/separation = 33
-
-[node name="LabelContainer" type="VBoxContainer" parent="." unique_id=2028767810]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 160.0
-offset_bottom = 137.0
-
-[node name="ScoreLabel" type="Label" parent="LabelContainer" unique_id=565592677]
-layout_mode = 2
-theme_override_font_sizes/font_size = 39
-text = "Score : "
-
-[node name="LevelLabel" type="Label" parent="LabelContainer" unique_id=1927073816]
-layout_mode = 2
-theme_override_font_sizes/font_size = 39
-text = "Level : 1"
 
 [node name="PauseMarginContainer" type="MarginContainer" parent="." unique_id=569347867]
 visible = false
@@ -127,6 +175,11 @@ theme_override_font_sizes/font_size = 30
 text = "Debug"
 horizontal_alignment = 1
 
+[node name="ScoreLabel" type="Label" parent="DebugContainer" unique_id=565592677]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Score : "
+
 [node name="AliveLabel" type="Label" parent="DebugContainer" unique_id=1276474500]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -178,7 +231,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/normal = ExtResource("2_5ysmq")
 theme_override_styles/hover = ExtResource("4_5pdws")
-text = "Upgrade damage"
+theme_override_styles/hover_pressed = ExtResource("4_5pdws")
+text = "Damage
+"
 icon = ExtResource("4_047uy")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -188,7 +243,8 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_5ysmq")
 theme_override_styles/hover = ExtResource("4_5pdws")
-text = "Upgrade health"
+theme_override_styles/hover_pressed = ExtResource("4_5pdws")
+text = "Health"
 icon = ExtResource("5_5pdws")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -196,9 +252,11 @@ vertical_icon_alignment = 0
 [node name="SpeedButton" type="Button" parent="PossibleUpgrades" unique_id=1404099219]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_styles/normal = ExtResource("2_5ysmq")
 theme_override_styles/hover = ExtResource("4_5pdws")
-text = "Upgrade speed"
+theme_override_styles/hover_pressed = ExtResource("4_5pdws")
+text = "Speed"
 icon = ExtResource("6_hd3ao")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -208,10 +266,28 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_5ysmq")
 theme_override_styles/hover = ExtResource("4_5pdws")
-text = "Upgrade fire rate"
+theme_override_styles/hover_pressed = ExtResource("4_5pdws")
+text = "Fire Rate"
 icon = ExtResource("4_047uy")
 icon_alignment = 1
 vertical_icon_alignment = 0
+
+[node name="Timer" type="Timer" parent="." unique_id=288334865]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1264970839]
+
+[node name="XpBar" type="ProgressBar" parent="." unique_id=845224017]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -960.0
+offset_right = 960.0
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_hd3ao")
+max_value = 2000.0
+show_percentage = false
 
 [connection signal="pressed" from="PauseMarginContainer/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMarginContainer/PauseContainer/ExitButton" to="." method="_on_exit_button_pressed"]

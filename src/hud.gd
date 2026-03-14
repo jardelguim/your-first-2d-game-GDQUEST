@@ -5,7 +5,9 @@ extends Control
 
 
 func _ready() -> void:
-	$UpgradeContainer.hide()
+	$XpBar.max_value = player.maxExperience
+	$XpBar.min_value = player.experience
+	$MarginUpgradeContainer.hide()
 	$PauseMarginContainer.hide()
 	# Debug
 	$DebugContainer/DamageLabel.text = "Damage: " + str(player.damage)
@@ -13,10 +15,21 @@ func _ready() -> void:
 	$DebugContainer/SpeedLabel.text = "Speed: " + str(player.speed)
 	$DebugContainer/FireRateLabel.text = "Fire rate: " + str(player.fireRate)
 
-func _on_game_hud_update(score , aliveMobs) -> void:
-	$LabelContainer/ScoreLabel.text = "Score : " + str(score)
-	$DebugContainer/AliveLabel.text = "Alive mobs: " + str(aliveMobs)
+func _on_game_hud_update() -> void:
+	$XpBar.value = player.experience
+	$DebugContainer/ScoreLabel.text = "Score : " + str(main.score)
+	$DebugContainer/AliveLabel.text = "Alive mobs: " + str(main.aliveMobs)
 	$DebugContainer/ExperienceLabel.text = "Experience : " + str(player.experience) + " , needed : " + str(player.maxExperience)
+	
+func _on_player_level_up() -> void:
+	$TimerAndLevelMargin/HBoxContainer/LevelLabel.text = "Level: " + str(player.level)
+	$XpBar.max_value = player.maxExperience
+	$XpBar.min_value = player.experience
+	$XpBar.value = $XpBar.min_value
+	_show_upgrade_list()
+	
+func _on_time_counter_timeout() -> void:
+	$TimerAndLevelMargin/HBoxContainer/TimerLabel.text = "%02d:%02d" % [main.min , main.sec] 
 	
 func _on_game_pause() -> void:
 	$PauseMarginContainer.show()
@@ -28,12 +41,8 @@ func _on_resume_button_pressed() -> void:
 	get_tree().paused = false
 	$PauseMarginContainer.hide()
 
-func _on_game_hud_leveled_up() -> void:
-	$LabelContainer/LevelLabel.text = "Level: " + str(player.level)
-	_show_upgrade_list()
-
 func _hide_upgrade_list():
-	$UpgradeContainer.hide()
+	$MarginUpgradeContainer.hide()
 	$DebugContainer/DamageLabel.text = "Damage: " + str(player.damage)
 	$DebugContainer/HealthLabel.text = "MaxHealth: " + str(player.maxHealth)
 	$DebugContainer/SpeedLabel.text = "Speed: " + str(player.speed)
@@ -41,13 +50,13 @@ func _hide_upgrade_list():
 	get_tree().paused = false
 
 func _show_upgrade_list():
-	$UpgradeContainer.show()
+	$MarginUpgradeContainer.show()
 	var button1 = possibleUpgrade.pick_random()
-	button1.reparent(get_node("UpgradeContainer"))
+	button1.reparent(get_node("MarginUpgradeContainer/VBoxContainer/UpgradeContainer"))
 	var button2 = possibleUpgrade.pick_random()
-	button2.reparent(get_node("UpgradeContainer"))
+	button2.reparent(get_node("MarginUpgradeContainer/VBoxContainer/UpgradeContainer"))
 	var button3 = possibleUpgrade.pick_random()
-	button3.reparent(get_node("UpgradeContainer"))
+	button3.reparent(get_node("MarginUpgradeContainer/VBoxContainer/UpgradeContainer"))
 	get_tree().paused = true
 
 # Upgrades
