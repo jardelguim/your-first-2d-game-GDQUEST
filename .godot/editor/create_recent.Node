@@ -1,0 +1,14 @@
+MobBase
+CollisionShape2D
+HBoxContainer
+VBoxContainer
+MarginContainer
+Timer
+ProgressBar
+AnimationPlayer
+Label
+RichTextLabel
+Panel
+AudioStreamPlayer2D
+Container
+ColorRect

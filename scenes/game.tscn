@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://17vmtxrkysi7"]
+
+[ext_resource type="Script" uid="uid://c2fwgsvjeqesi" path="res://src/game.gd" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bls7e03uednrc" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cuoeh46t7n77m" path="res://scenes/hud.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cd8sor4683qdp" path="res://scenes/tree.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://7xiy6nx3nl5j" path="res://scenes/enemies/red_slime.tscn" id="5_iywne"]
+
+[sub_resource type="Curve2D" id="Curve2D_iywne"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -371, -241, 0, 0, 0, 0, 2265, -241, 0, 0, 0, 0, 2265, 1311, 0, 0, 0, 0, -376, 1309, 0, 0, 0, 0, -371, -241)
+}
+point_count = 5
+
+[node name="Game" type="Node2D" unique_id=1220846652]
+y_sort_enabled = true
+script = ExtResource("1_lbhrr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=598571899]
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=625728896]
+offset_right = 1936.0
+offset_bottom = 1101.0
+color = Color(0.3942323, 0.67659247, 0.5677262, 1)
+
+[node name="Player" parent="." unique_id=1809900160 instance=ExtResource("1_uwrxv")]
+position = Vector2(924, 551)
+
+[node name="Path2D" type="Path2D" parent="Player" unique_id=307753190]
+position = Vector2(-924, -551)
+curve = SubResource("Curve2D_iywne")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D" unique_id=122704404]
+unique_name_in_owner = true
+position = Vector2(-371, -241)
+
+[node name="Trees" type="Node2D" parent="." unique_id=1637597333]
+
+[node name="Tree" parent="Trees" unique_id=1321234635 instance=ExtResource("2_yqjtg")]
+position = Vector2(410, 813)
+
+[node name="Tree2" parent="Trees" unique_id=555827650 instance=ExtResource("2_yqjtg")]
+position = Vector2(524, 434)
+
+[node name="Tree3" parent="Trees" unique_id=1750635256 instance=ExtResource("2_yqjtg")]
+position = Vector2(1255, 333)
+
+[node name="Tree4" parent="Trees" unique_id=401822403 instance=ExtResource("2_yqjtg")]
+position = Vector2(926, 971)
+
+[node name="Tree5" parent="Trees" unique_id=198539074 instance=ExtResource("2_yqjtg")]
+position = Vector2(1499, 751)
+
+[node name="Tree6" parent="Trees" unique_id=103523433 instance=ExtResource("2_yqjtg")]
+position = Vector2(303, 209)
+
+[node name="Tree7" parent="Trees" unique_id=1953678366 instance=ExtResource("2_yqjtg")]
+position = Vector2(1342, 318)
+
+[node name="Tree8" parent="Trees" unique_id=918717068 instance=ExtResource("2_yqjtg")]
+position = Vector2(1316, 389)
+
+[node name="Tree9" parent="Trees" unique_id=355191641 instance=ExtResource("2_yqjtg")]
+position = Vector2(1608, 1019)
+
+[node name="Timer" type="Timer" parent="." unique_id=261263214]
+wait_time = 0.3
+autostart = true
+
+[node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1948780793]
+
+[node name="HUD" parent="HUDLayer" unique_id=1756104570 instance=ExtResource("2_lbhrr")]
+
+[node name="TimeCounter" type="Timer" parent="." unique_id=1809264618]
+autostart = true
+
+[node name="RedSlime" parent="." unique_id=821288325 instance=ExtResource("5_iywne")]
+position = Vector2(549, 643)
+
+[node name="RedSlime2" parent="." unique_id=831845668 instance=ExtResource("5_iywne")]
+position = Vector2(1126, 885)
+
+[node name="RedSlime3" parent="." unique_id=1316257483 instance=ExtResource("5_iywne")]
+position = Vector2(1054, 697)
+
+[connection signal="hudUpdate" from="." to="HUDLayer/HUD" method="_on_game_hud_update"]
+[connection signal="pause" from="." to="HUDLayer/HUD" method="_on_game_pause"]
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="health_depleted" from="Player" to="HUDLayer/HUD" method="_on_player_health_depleted"]
+[connection signal="level_up" from="Player" to="HUDLayer/HUD" method="_on_player_level_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimeCounter" to="." method="_on_time_counter_timeout"]
+[connection signal="timeout" from="TimeCounter" to="HUDLayer/HUD" method="_on_time_counter_timeout"]

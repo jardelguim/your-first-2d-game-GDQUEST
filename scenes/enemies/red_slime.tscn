@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://7xiy6nx3nl5j"]
+
+[ext_resource type="Script" uid="uid://cp6fktlco15s3" path="res://src/enemies/red_slime.gd" id="1_akcgh"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://scenes/enemies/mob_sprite.tscn" id="2_jhcl7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dp2bf"]
+radius = 54.00926
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8l41y"]
+bg_color = Color(0.15294118, 0.16862746, 0.1882353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ys1d1"]
+bg_color = Color(1, 0.05490196, 0.1882353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="RedSlime" type="CharacterBody2D" unique_id=821288325]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_akcgh")
+metadata/_custom_type_script = "uid://t611gnbymlf1"
+
+[node name="MobSprite" parent="." unique_id=2008890567 instance=ExtResource("2_jhcl7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=45601188]
+position = Vector2(0, -26)
+shape = SubResource("CircleShape2D_dp2bf")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1446153886]
+unique_name_in_owner = true
+visible = false
+offset_left = -64.0
+offset_top = -113.0
+offset_right = 68.0
+offset_bottom = -100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8l41y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ys1d1")
+max_value = 3.0
+value = 3.0
+show_percentage = false

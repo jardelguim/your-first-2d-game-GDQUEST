@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c7ov0wp7bokrv"]
+
+[ext_resource type="Script" uid="uid://cn3dp01qkqrt7" path="res://src/audio_manager.gd" id="1_8qd8g"]
+[ext_resource type="AudioStream" uid="uid://bsmx1vags8dbe" path="res://sounds/combat/mixkit-short-explosion-1694.wav" id="2_3asnw"]
+[ext_resource type="AudioStream" uid="uid://v87ouycq2uj" path="res://sounds/combat/mixkit-body-punch-quick-hit-2153.wav" id="3_m6ggh"]
+
+[node name="AudioManager" type="Node2D" unique_id=1836815050]
+script = ExtResource("1_8qd8g")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=1140998798]
+unique_name_in_owner = true
+stream = ExtResource("2_3asnw")
+max_polyphony = 8
+
+[node name="ImpactSound" type="AudioStreamPlayer2D" parent="." unique_id=1982801514]
+unique_name_in_owner = true
+stream = ExtResource("3_m6ggh")
+max_polyphony = 8

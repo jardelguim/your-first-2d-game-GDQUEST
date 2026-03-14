@@ -1,0 +1,325 @@
+[gd_scene format=3 uid="uid://cuoeh46t7n77m"]
+
+[ext_resource type="Script" uid="uid://k6tg6t4wsbrv" path="res://src/hud.gd" id="1_oo0fn"]
+[ext_resource type="StyleBox" uid="uid://cqrb8c8ed17yu" path="res://styles/upgrade_button_style.tres" id="2_5ysmq"]
+[ext_resource type="StyleBox" uid="uid://2un5ryrrt1sn" path="res://styles/button_style.tres" id="3_5ysmq"]
+[ext_resource type="StyleBox" uid="uid://ojcyeuj5orl4" path="res://styles/upgrade_button_hover_style.tres" id="4_5pdws"]
+[ext_resource type="Texture2D" uid="uid://ckk5olyxebpee" path="res://assets/revolver.png" id="4_047uy"]
+[ext_resource type="Texture2D" uid="uid://ctegcyxdsb3iw" path="res://assets/hearts.png" id="5_5pdws"]
+[ext_resource type="Texture2D" uid="uid://cwdt0dtfw8hta" path="res://assets/sprint.png" id="6_hd3ao"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pdws"]
+bg_color = Color(0, 0, 0, 0.4627451)
+border_width_left = 2
+border_width_top = 5
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 16
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ysmq"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 1
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd3ao"]
+bg_color = Color(0.40394276, 0.45523793, 1, 1)
+
+[node name="HUD" type="Control" unique_id=1756104570]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oo0fn")
+
+[node name="TimerAndLevelMargin" type="MarginContainer" parent="." unique_id=662749978]
+layout_mode = 0
+offset_left = 37.14
+offset_top = 51.33
+offset_right = 1070.14
+offset_bottom = 105.33001
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TimerAndLevelMargin" unique_id=2040980736]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 718
+
+[node name="LevelLabel" type="Label" parent="TimerAndLevelMargin/HBoxContainer" unique_id=1927073816]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "Level : 1"
+
+[node name="TimerLabel" type="Label" parent="TimerAndLevelMargin/HBoxContainer" unique_id=1100482053]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="MarginUpgradeContainer" type="MarginContainer" parent="." unique_id=699550237]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.5
+offset_top = -209.0
+offset_right = 196.5
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginUpgradeContainer" unique_id=1312562247]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pdws")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginUpgradeContainer" unique_id=222133007]
+layout_mode = 2
+theme_override_constants/separation = 27
+
+[node name="Label" type="Label" parent="MarginUpgradeContainer/VBoxContainer" unique_id=372870688]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 23
+text = "Level up!
+Choose a upgrade"
+horizontal_alignment = 1
+
+[node name="UpgradeContainer" type="HBoxContainer" parent="MarginUpgradeContainer/VBoxContainer" unique_id=896232375]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 33
+
+[node name="PauseMarginContainer" type="MarginContainer" parent="." unique_id=569347867]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = -140.5
+offset_right = 255.0
+offset_bottom = 140.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="PauseMarginContainer" unique_id=423854905]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ysmq")
+
+[node name="PauseContainer" type="VBoxContainer" parent="PauseMarginContainer" unique_id=1960574137]
+layout_mode = 2
+theme_override_constants/separation = 52
+
+[node name="Label" type="Label" parent="PauseMarginContainer/PauseContainer" unique_id=2038943052]
+layout_mode = 2
+theme_override_font_sizes/font_size = 37
+text = "Game Paused!"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMarginContainer/PauseContainer" unique_id=281128122]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_5ysmq")
+text = "Resume"
+
+[node name="ExitButton" type="Button" parent="PauseMarginContainer/PauseContainer" unique_id=1481980920]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_5ysmq")
+text = "Exit"
+
+[node name="DebugContainer" type="VBoxContainer" parent="." unique_id=2048339219]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -171.45001
+offset_right = 556.0
+offset_bottom = -59.449524
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="DebugContainer" unique_id=254040100]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Debug"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="DebugContainer" unique_id=565592677]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Score : "
+
+[node name="AliveLabel" type="Label" parent="DebugContainer" unique_id=1276474500]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Alive: 10"
+
+[node name="ExperienceLabel" type="Label" parent="DebugContainer" unique_id=458613689]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Experience : 00 , needed : 00"
+
+[node name="DamageLabel" type="Label" parent="DebugContainer" unique_id=1086009316]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Experience : 00 , needed : 00"
+
+[node name="HealthLabel" type="Label" parent="DebugContainer" unique_id=1978684637]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Experience : 00 , needed : 00"
+
+[node name="SpeedLabel" type="Label" parent="DebugContainer" unique_id=1038377094]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Experience : 00 , needed : 00"
+
+[node name="FireRateLabel" type="Label" parent="DebugContainer" unique_id=774221667]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Experience : 00 , needed : 00"
+
+[node name="PossibleUpgrades" type="HBoxContainer" parent="." unique_id=158120495]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = 220.0
+offset_right = 368.0
+offset_bottom = 543.00024
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 33
+
+[node name="DamageButton" type="Button" parent="PossibleUpgrades" unique_id=1111909669]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = ExtResource("2_5ysmq")
+theme_override_styles/hover = ExtResource("4_5pdws")
+theme_override_styles/hover_pressed = ExtResource("4_5pdws")
+text = "Damage
+"
+icon = ExtResource("4_047uy")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="HealthButton" type="Button" parent="PossibleUpgrades" unique_id=1586593638]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_5ysmq")
+theme_override_styles/hover = ExtResource("4_5pdws")
+theme_override_styles/hover_pressed = ExtResource("4_5pdws")
+text = "Health"
+icon = ExtResource("5_5pdws")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="SpeedButton" type="Button" parent="PossibleUpgrades" unique_id=1404099219]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = ExtResource("2_5ysmq")
+theme_override_styles/hover = ExtResource("4_5pdws")
+theme_override_styles/hover_pressed = ExtResource("4_5pdws")
+text = "Speed"
+icon = ExtResource("6_hd3ao")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="FireRateButton" type="Button" parent="PossibleUpgrades" unique_id=962697526]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_5ysmq")
+theme_override_styles/hover = ExtResource("4_5pdws")
+theme_override_styles/hover_pressed = ExtResource("4_5pdws")
+text = "Fire Rate"
+icon = ExtResource("4_047uy")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Timer" type="Timer" parent="." unique_id=288334865]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1264970839]
+
+[node name="XpBar" type="ProgressBar" parent="." unique_id=845224017]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -960.0
+offset_right = 960.0
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_hd3ao")
+max_value = 2000.0
+show_percentage = false
+
+[node name="GameOver" type="CanvasLayer" parent="." unique_id=1641700316]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver" unique_id=1138410651]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5058824)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect" unique_id=1253920229]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 110
+text = "Game Over :("
+
+[connection signal="pressed" from="PauseMarginContainer/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMarginContainer/PauseContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PossibleUpgrades/DamageButton" to="." method="_on_damage_button_pressed"]
+[connection signal="pressed" from="PossibleUpgrades/HealthButton" to="." method="_on_health_button_pressed"]
+[connection signal="pressed" from="PossibleUpgrades/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="PossibleUpgrades/FireRateButton" to="." method="_on_fire_rate_button_pressed"]
