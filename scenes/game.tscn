@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bls7e03uednrc" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cuoeh46t7n77m" path="res://scenes/hud.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cd8sor4683qdp" path="res://scenes/tree.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://7xiy6nx3nl5j" path="res://scenes/enemies/red_slime.tscn" id="5_iywne"]
 
 [sub_resource type="Curve2D" id="Curve2D_iywne"]
 _data = {
@@ -74,15 +73,6 @@ autostart = true
 
 [node name="TimeCounter" type="Timer" parent="." unique_id=1809264618]
 autostart = true
-
-[node name="RedSlime" parent="." unique_id=821288325 instance=ExtResource("5_iywne")]
-position = Vector2(549, 643)
-
-[node name="RedSlime2" parent="." unique_id=831845668 instance=ExtResource("5_iywne")]
-position = Vector2(1126, 885)
-
-[node name="RedSlime3" parent="." unique_id=1316257483 instance=ExtResource("5_iywne")]
-position = Vector2(1054, 697)
 
 [connection signal="hudUpdate" from="." to="HUDLayer/HUD" method="_on_game_hud_update"]
 [connection signal="pause" from="." to="HUDLayer/HUD" method="_on_game_pause"]

@@ -16,7 +16,9 @@ func _ready() -> void:
 	$DebugContainer/FireRateLabel.text = "Fire rate: " + str(player.fireRate)
 
 func _on_game_hud_update() -> void:
-	$XpBar.value = player.experience
+	# $XpBar.value = player.experience
+	var tween = get_tree().create_tween()
+	tween.tween_property($XpBar, "value", player.experience, 0.2).set_trans(Tween.TRANS_LINEAR)
 	$DebugContainer/ScoreLabel.text = "Score : " + str(main.score)
 	$DebugContainer/AliveLabel.text = "Alive mobs: " + str(main.aliveMobs)
 	$DebugContainer/ExperienceLabel.text = "Experience : " + str(player.experience) + " , needed : " + str(player.maxExperience)

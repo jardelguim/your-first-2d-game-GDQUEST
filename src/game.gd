@@ -20,17 +20,30 @@ func _on_time_counter_timeout() -> void:
 	totalSeconds += 1
 	min = int(totalSeconds / 60.0)
 	sec = totalSeconds - min * 60
+	print(min)
+	print(sec)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		emit_signal("pause")
 		get_tree().paused = true
+		
 	if Input.is_action_just_pressed("enter"):
 		player.experience = player.maxExperience
 		
+	if Input.is_action_just_pressed("skip_time"):
+		print("time skipped")
+		totalSeconds += 30
+		
 func spawn_mob():
-	var mobList = [preload("res://scenes/enemies/blue_mob.tscn"), preload("res://scenes/enemies/green_slime.tscn")]
-	var new_mob =mobList.pick_random().instantiate()
+	var green_slime = preload("res://scenes/enemies/green_slime.tscn").instantiate()
+	var blue_slime = preload("res://scenes/enemies/blue_slime.tscn").instantiate()
+	var red_slime = preload("res://scenes/enemies/red_slime.tscn").instantiate()
+	var new_mob = green_slime
+	if min >= 2:
+		new_mob = blue_slime
+	elif min >= 5:
+		new_mob = red_slime
 	%PathFollow2D.progress_ratio = randf()
 	new_mob.global_position = %PathFollow2D.global_position
 	new_mob.enemyDeath.connect(_enemy_death)
