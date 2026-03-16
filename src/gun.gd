@@ -14,7 +14,6 @@ func _change_fire_rate():
 func _physics_process(_delta: float) -> void:
 	# Get enemies inside the collision and creates a array
 	var enemies_in_range = get_overlapping_bodies()
-	print(enemies_in_range)
 	if enemies_in_range.size() > 0:
 		isEnemiesInRange = true
 		# Points the gun at the closesest enemy

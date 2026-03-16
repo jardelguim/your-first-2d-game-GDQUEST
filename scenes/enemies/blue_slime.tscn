@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dmuc7as1n53w8"]
 
-[ext_resource type="Script" uid="uid://qwqx6o4wmgrq" path="res://src/enemies/blue_mob.gd" id="1_8pbqv"]
-[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://scenes/enemies/mob_sprite.tscn" id="2_hig75"]
+[ext_resource type="Script" uid="uid://qwqx6o4wmgrq" path="res://src/enemies/blue_slime.gd" id="1_osxyh"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://scenes/enemies/mob_sprite.tscn" id="2_30a86"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ir377"]
-radius = 34.0147
+[sub_resource type="CircleShape2D" id="CircleShape2D_8pbqv"]
+radius = 54.00926
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxelu"]
 bg_color = Color(0.15294118, 0.16862746, 0.1882353, 1)
@@ -23,13 +23,19 @@ corner_radius_bottom_left = 8
 [node name="BlueMob" type="CharacterBody2D" unique_id=301648082]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_8pbqv")
+platform_floor_layers = 4294967040
+script = ExtResource("1_osxyh")
+health = 10.0
+speed = 300.0
+experienceGiven = 5
+damage = 10.0
 metadata/_custom_type_script = "uid://t611gnbymlf1"
 
-[node name="MobSprite" parent="." unique_id=2008890567 instance=ExtResource("2_hig75")]
+[node name="MobSprite" parent="." unique_id=2008890567 instance=ExtResource("2_30a86")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2063921186]
-shape = SubResource("CircleShape2D_ir377")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1310154672]
+position = Vector2(0, -26)
+shape = SubResource("CircleShape2D_8pbqv")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=22316765]
 unique_name_in_owner = true
@@ -40,6 +46,4 @@ offset_right = 68.0
 offset_bottom = -100.0
 theme_override_styles/background = SubResource("StyleBoxFlat_bxelu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6opqj")
-max_value = 3.0
-value = 3.0
 show_percentage = false

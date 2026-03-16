@@ -32,7 +32,9 @@ func _physics_process(_delta: float) -> void:
 func take_damage():
 	health -= player.damage
 	%ProgressBar.show()
-	%ProgressBar.value = health
+	var tween = get_tree().create_tween()
+	tween.tween_property(%ProgressBar, "value", health, 0.2).set_trans(Tween.TRANS_LINEAR)
+	# %ProgressBar.value = health
 	$MobSprite.play_hurt()
 	
 	if health <= 0:
