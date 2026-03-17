@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dmuc7as1n53w8"]
 
 [ext_resource type="Script" uid="uid://qwqx6o4wmgrq" path="res://src/enemies/blue_slime.gd" id="1_osxyh"]
-[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://scenes/enemies/mob_sprite.tscn" id="2_30a86"]
+[ext_resource type="PackedScene" uid="uid://cs2urc5idv3n8" path="res://scenes/enemies/sprites/blue_slime_sprite.tscn" id="2_osxyh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8pbqv"]
 radius = 54.00926
@@ -20,7 +20,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="BlueMob" type="CharacterBody2D" unique_id=301648082]
+[node name="BlueSlime" type="CharacterBody2D" unique_id=301648082 node_paths=PackedStringArray("Sprite", "HealthBar")]
 collision_layer = 2
 collision_mask = 3
 platform_floor_layers = 4294967040
@@ -29,9 +29,12 @@ health = 10.0
 speed = 300.0
 experienceGiven = 5
 damage = 10.0
+Sprite = NodePath("MobSprite")
+HealthBar = NodePath("ProgressBar")
 metadata/_custom_type_script = "uid://t611gnbymlf1"
 
-[node name="MobSprite" parent="." unique_id=2008890567 instance=ExtResource("2_30a86")]
+[node name="MobSprite" parent="." unique_id=2008890567 instance=ExtResource("2_osxyh")]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1310154672]
 position = Vector2(0, -26)
@@ -39,7 +42,6 @@ shape = SubResource("CircleShape2D_8pbqv")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=22316765]
 unique_name_in_owner = true
-visible = false
 offset_left = -64.0
 offset_top = -113.0
 offset_right = 68.0

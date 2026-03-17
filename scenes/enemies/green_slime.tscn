@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7kfwjamnw1tb"]
 
 [ext_resource type="Script" uid="uid://dkggsdnclq2gx" path="res://src/enemies/green_slime.gd" id="1_mysqx"]
-[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://scenes/enemies/mob_sprite.tscn" id="2_mysqx"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://scenes/enemies/sprites/green_slime_sprite.tscn" id="2_mysqx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_71rcx"]
 radius = 54.00926
@@ -20,11 +20,13 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="GreenSlime" type="CharacterBody2D" unique_id=1079115141]
+[node name="GreenSlime" type="CharacterBody2D" unique_id=1079115141 node_paths=PackedStringArray("Sprite", "HealthBar")]
 collision_layer = 2
 collision_mask = 3
 platform_floor_layers = 4294967040
 script = ExtResource("1_mysqx")
+Sprite = NodePath("MobSprite")
+HealthBar = NodePath("ProgressBar")
 metadata/_custom_type_script = "uid://t611gnbymlf1"
 
 [node name="MobSprite" parent="." unique_id=2008890567 instance=ExtResource("2_mysqx")]
@@ -36,7 +38,6 @@ shape = SubResource("CircleShape2D_71rcx")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=185094395]
 unique_name_in_owner = true
-visible = false
 offset_left = -64.0
 offset_top = -113.0
 offset_right = 68.0

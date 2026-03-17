@@ -64,7 +64,7 @@ position = Vector2(1316, 389)
 position = Vector2(1608, 1019)
 
 [node name="Timer" type="Timer" parent="." unique_id=261263214]
-wait_time = 0.3
+wait_time = 0.6
 autostart = true
 
 [node name="HUDLayer" type="CanvasLayer" parent="." unique_id=1948780793]
