@@ -180,11 +180,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Score : "
 
-[node name="MobTypeLabel" type="Label" parent="DebugContainer" unique_id=1974042731]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Mobtype"
-
 [node name="AliveLabel" type="Label" parent="DebugContainer" unique_id=1276474500]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -214,6 +209,11 @@ text = "Experience : 00 , needed : 00"
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Experience : 00 , needed : 00"
+
+[node name="MobTypeLabel" type="Label" parent="DebugContainer" unique_id=1974042731]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Mobtype"
 
 [node name="PossibleUpgrades" type="HBoxContainer" parent="." unique_id=158120495]
 layout_mode = 1

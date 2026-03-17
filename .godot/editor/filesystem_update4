@@ -1,13 +1,2 @@
-res://scenes/enemies/sprites/green_slime_sprite.tscn
-res://scenes/enemies/sprites/blue_slime_sprite.tscn
-res://scenes/enemies/blue_slime.tscn
-res://scenes/enemies/red_slime.tscn
-res://scenes/enemies/green_slime.tscn
-res://src/enemies/red_slime.gd
-res://src/enemies/blue_slime.gd
-res://src/mob_class.gd
-res://scenes/enemies/sprites/red_slime_sprite.tscn
-res://src/game.gd
 res://scenes/hud.tscn
 res://src/hud.gd
-res://scenes/game.tscn
