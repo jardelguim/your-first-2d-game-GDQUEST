@@ -4,24 +4,30 @@ extends Control
 @onready var player = get_node("/root/Game/Player")
 
 
+func _debug_update():
+	$DebugContainer/DamageLabel.text = "Damage: " + str(player.damage)
+	$DebugContainer/HealthLabel.text = "MaxHealth: " + str(player.maxHealth)
+	$DebugContainer/SpeedLabel.text = "Speed: " + str(player.speed)
+	$DebugContainer/FireRateLabel.text = "Fire rate: " + str(player.fireRate)
+	$DebugContainer/ScoreLabel.text = "Score : " + str(main.score)
+	$DebugContainer/AliveLabel.text = "Alive mobs: " + str(main.aliveMobs)
+	$DebugContainer/MobTypeLabel.text = "Mob Type: " + str(main.mob_type)
+	$DebugContainer/ExperienceLabel.text = "Experience : " + str(player.experience) + " , needed : " + str(player.maxExperience)
+
 func _ready() -> void:
 	$XpBar.max_value = player.maxExperience
 	$XpBar.min_value = player.experience
 	$MarginUpgradeContainer.hide()
 	$PauseMarginContainer.hide()
-	# Debug
-	$DebugContainer/DamageLabel.text = "Damage: " + str(player.damage)
-	$DebugContainer/HealthLabel.text = "MaxHealth: " + str(player.maxHealth)
-	$DebugContainer/SpeedLabel.text = "Speed: " + str(player.speed)
-	$DebugContainer/FireRateLabel.text = "Fire rate: " + str(player.fireRate)
+	_debug_update()
+	
 
 func _on_game_hud_update() -> void:
 	# $XpBar.value = player.experience
 	var tween = get_tree().create_tween()
 	tween.tween_property($XpBar, "value", player.experience, 0.2).set_trans(Tween.TRANS_LINEAR)
-	$DebugContainer/ScoreLabel.text = "Score : " + str(main.score)
-	$DebugContainer/AliveLabel.text = "Alive mobs: " + str(main.aliveMobs)
-	$DebugContainer/ExperienceLabel.text = "Experience : " + str(player.experience) + " , needed : " + str(player.maxExperience)
+	_debug_update()
+	
 	
 func _on_player_level_up() -> void:
 	$TimerAndLevelMargin/HBoxContainer/LevelLabel.text = "Level: " + str(player.level)

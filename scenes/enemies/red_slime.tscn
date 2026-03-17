@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7xiy6nx3nl5j"]
 
 [ext_resource type="Script" uid="uid://cp6fktlco15s3" path="res://src/enemies/red_slime.gd" id="1_akcgh"]
-[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://scenes/enemies/mob_sprite.tscn" id="2_jhcl7"]
+[ext_resource type="PackedScene" uid="uid://cbhnp0k5h7qp7" path="res://scenes/enemies/sprites/red_slime_sprite.tscn" id="2_akcgh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_akcgh"]
 radius = 54.00926
@@ -20,7 +20,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="RedSlime" type="CharacterBody2D" unique_id=821288325]
+[node name="RedSlime" type="CharacterBody2D" unique_id=821288325 node_paths=PackedStringArray("Sprite", "HealthBar")]
 collision_layer = 2
 collision_mask = 3
 platform_floor_layers = 4294967040
@@ -29,9 +29,11 @@ health = 15.0
 speed = 370.0
 experienceGiven = 10
 damage = 15.0
+Sprite = NodePath("RedSlimeSprite")
+HealthBar = NodePath("ProgressBar")
 metadata/_custom_type_script = "uid://t611gnbymlf1"
 
-[node name="MobSprite" parent="." unique_id=2008890567 instance=ExtResource("2_jhcl7")]
+[node name="RedSlimeSprite" parent="." unique_id=2008890567 instance=ExtResource("2_akcgh")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1019994421]
 position = Vector2(0, -26)
@@ -39,7 +41,6 @@ shape = SubResource("CircleShape2D_akcgh")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1446153886]
 unique_name_in_owner = true
-visible = false
 offset_left = -64.0
 offset_top = -113.0
 offset_right = 68.0

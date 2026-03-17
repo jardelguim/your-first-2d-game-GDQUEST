@@ -180,6 +180,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Score : "
 
+[node name="MobTypeLabel" type="Label" parent="DebugContainer" unique_id=1974042731]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Mobtype"
+
 [node name="AliveLabel" type="Label" parent="DebugContainer" unique_id=1276474500]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30

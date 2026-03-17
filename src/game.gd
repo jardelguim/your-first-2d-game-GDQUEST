@@ -5,6 +5,7 @@ extends Node2D
 # Variables
 var score : int = 0
 var aliveMobs = 0
+var mob_type
 
 # Timer
 var totalSeconds : int = 0
@@ -36,14 +37,16 @@ func _process(_delta: float) -> void:
 		totalSeconds += 30
 		
 func spawn_mob():
-	var green_slime = preload("res://scenes/enemies/green_slime.tscn").instantiate()
-	var blue_slime = preload("res://scenes/enemies/blue_slime.tscn").instantiate()
-	var red_slime = preload("res://scenes/enemies/red_slime.tscn").instantiate()
-	var new_mob = green_slime
-	if min >= 2:
-		new_mob = blue_slime
-	elif min >= 5:
-		new_mob = red_slime
+	var green_slime = preload("res://scenes/enemies/green_slime.tscn")
+	var blue_slime = preload("res://scenes/enemies/blue_slime.tscn")
+	var red_slime = preload("res://scenes/enemies/red_slime.tscn")
+	if min >= 2 and min < 5:
+		mob_type = blue_slime
+	elif min >= 4:
+		mob_type = red_slime
+	else:
+		mob_type = green_slime
+	var new_mob = mob_type.instantiate()
 	%PathFollow2D.progress_ratio = randf()
 	new_mob.global_position = %PathFollow2D.global_position
 	new_mob.enemyDeath.connect(_enemy_death)
